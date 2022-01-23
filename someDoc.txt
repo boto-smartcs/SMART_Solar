@@ -1,0 +1,72 @@
+[126, 5, 132, 0, 61, 3, 96, 4, 247, 59, 4, 247, 0, 66, 3, 58, 10, 245, 30, 231]
+
+[49, 2, 112, 10, 237, 192, 231, 126, 0, 5, 0, 5, 126, 231, 126, 5, 132, 0, 52, 2]
+
+[126, 0, 5, 0, 5, 126, 231, 126, 0, 5, 0, 5, 126, 231, 126, 5, 134, 0, 46, 2]
+[150, 4, 250, 60, 4, 250, 0]
+
+
+Remaining amount (Wh) = (remaining amount/100* (battery total capacity(Ah)*voltage)
+Remaining amount (Wh) = (Json1 Remaining/100)*(batteryAh(sub)*json1 * Batteryvolt
+
+잔량(Wh) = (잔량/100)*(배터리전체용량(Ah)*전압)
+잔량(Wh) = (Json1 Remaining/100)*(battery Ah(sub))*json1 Battery volt
+
+사용가능 시간(hour) = 잔량(Wh)/소비전력(한시간)
+사용가능 시간(hour) = 잔량(wh)/json1 Load Power(
+Available time (hour) = Remaining amount (Wh)/Power consumption (hour)
+Available time (hour) = Remaining amount (wh)/json1 Load Power
+
+
+sudo nano /etc/rc.local
+
+sudo nano /etc/profile
+
+/home/smartcs/procMon.sh &
+
+
+A day (ex: 21-12-24 23:00)23:00시에 측정한 json1의 battery Remaining(ex:65) - (ex: 21-12-24 00:00) 00:00시에 측정한 json1의 battery Remaining(ex:60)
+It's going to be ex 65-60.
+
+Battery efficiency = (((((23:00 measuring - 00:00 hourly measurement) / 100) * battery capacity) * voltage) / power generated per day - power consumption per day) * 100
+
+
+
+
+1. peak 전력 0
+ -> pv power 데이터가 평균적으로 6.xx정도 나오는데 peak가 0으로 뜨는게 이상함
+ 
+2. 배터리 효율
+ -> battery remaining이 60~62 인데 왜 battery efficiency가 0??
+ 
+3. Available time
+ -> battery efficiency가 0인데 Available time은 16k days?
+1. Peak power 0.
+ -> The average pv power data is about 6.xx, but it's weird that the peak is zero.
+ 
+2. Battery efficiency.
+ -> Battery Remaining is 60-62, but why is battery efficiency zero?
+ 
+3. Available time
+ -> Battery efficiency is 0, but available time is 16k days?
+
+1. Peak power 0.
+ -> The average pv power data is about 6.xx, but it's weird that the peak is zero.
+ 
+2. Battery efficiency.
+ -> Battery Remaining is 60-62, but why is battery efficiency zero?
+ 
+3. Available time
+ -> Battery efficiency is 0, but available time is 16k days?
+ 
+ 
+ 
+ 
+ >>>>>>>>>>>>>>(I think the data came out weird because the power consumption is zero.)
+				(I think I need to make an exception.)
+				(If the power consumption is zero or -,)
+				()
+ 
+ 
+ bat_eff = (((((filesman.rremAmount() - remAmount>>(json1)) / 100) * batteryAhSub) * voltage>> bat volt (json1) ) / genEngtoday (Generated Energy Today_H, Generated Energy Today_H) - conEngtoday(Consumed Energy Today_H , Consumed Energy Today_L)) * 100
+ 
